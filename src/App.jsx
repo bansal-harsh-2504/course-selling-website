@@ -15,7 +15,7 @@ const App = () => {
       return;
     }
     try {
-      const response = await axios.post("http://localhost:3000/signup", {
+      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/signup`, {
         username: formData.username,
         password: formData.password,
       });
@@ -34,7 +34,7 @@ const App = () => {
       return;
     }
     try {
-      const response = await axios.post("http://localhost:3000/login", {
+      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/login`, {
         username: formData.username,
         password: formData.password,
       });
@@ -56,7 +56,7 @@ const App = () => {
     }
 
     try {
-      const response = await axios.get("http://localhost:3000/logout", {
+      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/logout`, {
         headers: { token },
       });
       if (response.data) {
@@ -77,7 +77,7 @@ const App = () => {
     }
 
     try {
-      const response = await axios.get("http://localhost:3000/me", {
+      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/me`, {
         headers: { token },
       });
       if (response) {
@@ -96,7 +96,6 @@ const App = () => {
       <label htmlFor="username">Username: </label>
       <input
         type="text"
-        id="username"
         name="username"
         value={formData.username}
         onChange={handleChange}
@@ -105,7 +104,6 @@ const App = () => {
       <label htmlFor="password">Password: </label>
       <input
         type="password"
-        id="password"
         name="password"
         value={formData.password}
         onChange={handleChange}
